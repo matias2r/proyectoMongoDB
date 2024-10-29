@@ -22,8 +22,9 @@ app.use("/api/user", require("./routes/usersRoutes"));
 // Mostrar enlaces de la API
 const showApiLinks = (port) => {
   console.log(`\nAPI disponible en las siguientes rutas:`);
+  console.log(`\nEndpoints Productos:`);
   console.log(
-    `- Products (GET todos): \x1b[36mhttp://localhost:${port}/api/product/readall\x1b[0m`
+    `\n- Products (GET todos): \x1b[36mhttp://localhost:${port}/api/product/readall\x1b[0m`
   );
   console.log(
     `- Product (GET por ID): \x1b[36mhttp://localhost:${port}/api/product/readone/:id\x1b[0m`
@@ -38,18 +39,13 @@ const showApiLinks = (port) => {
     `- Product (DELETE eliminar): \x1b[36mhttp://localhost:${port}/api/product/delete/:id\x1b[0m`
   );
 
+  console.log(`\nEndpoints Usuarios:`);
   // Enlaces de usuarios
   console.log(
-    `- User (POST create): \x1b[36mhttp://localhost:${port}/api/user/create\x1b[0m`
+    `\n- User (POST create): \x1b[36mhttp://localhost:${port}/api/user/create\x1b[0m`
   );
   console.log(
     `- User (POST iniciar sesión): \x1b[36mhttp://localhost:${port}/api/user/login\x1b[0m`
-  );
-  console.log(
-    `- User (GET verificar token): \x1b[36mhttp://localhost:${port}/api/user/verifytoken\x1b[0m`
-  );
-  console.log(
-    `- User (PUT actualizar): \x1b[36mhttp://localhost:${port}/api/user/update\x1b[0m`
   );
 };
 

@@ -6,17 +6,20 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Connect Database
+// Conectar base de datos
 connectDB();
 
-// Init Middleware
+// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Rutas de la API
-app.use("/api", require("./routes/productsRoutes"));
+// Rutas de productos (CRUD)
+app.use("/api/product", require("./routes/productsRoutes"));
 
-// Show API links
+// Rutas de usuarios (CRUD)
+app.use("/api/user", require("./routes/usersRoutes"));
+
+// Mostrar enlaces de la API
 const showApiLinks = (port) => {
   console.log(`\nAPI disponible en las siguientes rutas:`);
   console.log(
@@ -33,6 +36,20 @@ const showApiLinks = (port) => {
   );
   console.log(
     `- Product (DELETE eliminar): \x1b[36mhttp://localhost:${port}/api/product/delete/:id\x1b[0m`
+  );
+
+  // Enlaces de usuarios
+  console.log(
+    `- User (POST create): \x1b[36mhttp://localhost:${port}/api/user/create\x1b[0m`
+  );
+  console.log(
+    `- User (POST iniciar sesión): \x1b[36mhttp://localhost:${port}/api/user/login\x1b[0m`
+  );
+  console.log(
+    `- User (GET verificar token): \x1b[36mhttp://localhost:${port}/api/user/verifytoken\x1b[0m`
+  );
+  console.log(
+    `- User (PUT actualizar): \x1b[36mhttp://localhost:${port}/api/user/update\x1b[0m`
   );
 };
 

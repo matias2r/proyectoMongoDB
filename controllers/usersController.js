@@ -1,5 +1,6 @@
 const User = require("../models/usersModel");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 // POST: Crear un usuario
 exports.createUser = async (req, res) => {
@@ -56,11 +57,35 @@ exports.loginUser = async (req, res) => {
       return res.status(400).json({ message: "Contraseña incorrecta" });
     }
 
-    res.status(200).json({ message: "Usuario logueado" });
+    // Crear token de usuario
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
+    res.status(200).json({ message: "Usuario logueado", token });
   } catch (error) {
     console.error(error);
     res
       .status(500)
       .json({ message: "Error al loguear usuario", error: error.message });
+  }
+};
+
+exports.verifyUser = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const user = await User.findById(userId).select("-password");
+
+    if (!user) {
+      return res.status(400).json({ message: "Usuario no encontrado" });
+    }
+
+    res.status(200).json({ user });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ message: "Error al verificar usuario", error: error.message });
   }
 };

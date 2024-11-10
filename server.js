@@ -24,28 +24,34 @@ const showApiLinks = (port) => {
   console.log(`\nAPI disponible en las siguientes rutas:`);
   console.log(`\nEndpoints Productos:`);
   console.log(
-    `\n- Products (GET todos): \x1b[36mhttp://localhost:${port}/api/product/readall\x1b[0m`
+    `\n- Product (GET Todos los productos): \x1b[36mhttp://localhost:${port}/api/product/readall\x1b[0m`
   );
   console.log(
-    `- Product (GET por ID): \x1b[36mhttp://localhost:${port}/api/product/readone/:id\x1b[0m`
+    `- Product (GET Por ID): \x1b[36mhttp://localhost:${port}/api/product/readone/:id\x1b[0m`
   );
   console.log(
-    `- Product (POST crear): \x1b[36mhttp://localhost:${port}/api/product/create\x1b[0m`
+    `- Product (POST Crear productos): \x1b[36mhttp://localhost:${port}/api/product/create\x1b[0m`
   );
   console.log(
-    `- Product (PUT actualizar): \x1b[36mhttp://localhost:${port}/api/product/update/:id\x1b[0m`
+    `- Product (PUT Actualizar por ID): \x1b[36mhttp://localhost:${port}/api/product/update/:id\x1b[0m`
   );
   console.log(
-    `- Product (DELETE eliminar): \x1b[36mhttp://localhost:${port}/api/product/delete/:id\x1b[0m`
+    `- Product (DELETE Eliminar): \x1b[36mhttp://localhost:${port}/api/product/delete/:id\x1b[0m`
   );
 
   console.log(`\nEndpoints Usuarios:`);
   // Enlaces de usuarios
   console.log(
-    `\n- User (POST create): \x1b[36mhttp://localhost:${port}/api/user/create\x1b[0m`
+    `\n- User (POST Crear Usuario): \x1b[36mhttp://localhost:${port}/api/user/create\x1b[0m`
   );
   console.log(
-    `- User (POST iniciar sesión): \x1b[36mhttp://localhost:${port}/api/user/login\x1b[0m`
+    `- User (PUT Actualizar por ID): \x1b[36mhttp://localhost:${port}/api/user/update/:id\x1b[0m`
+  );
+  console.log(
+    `- User (POST Iniciar sesión): \x1b[36mhttp://localhost:${port}/api/user/login\x1b[0m`
+  );
+  console.log(
+    `- User (GET Verificar el token): \x1b[36mhttp://localhost:${port}/api/user/verifytoken\x1b[0m`
   );
 };
 

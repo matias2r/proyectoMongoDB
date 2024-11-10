@@ -4,24 +4,22 @@ const usersController = require("../controllers/usersController");
 const verifyToken = require("../middlewares/authMiddleware");
 
 // POST: Crear un usuario
-router.post("/create", usersController.createUser);
+router.post("/create", verifyToken, usersController.createUser);
 
 // Login de usuario
 router.post("/login", usersController.loginUser);
 
-// Verificacion token de usuario
-router.get("/verifytoken", verifyToken, usersController.verifyUser);
-
 // GET: Obtener todos los usuarios
-// router.get("/readall", userController.getUsers);
+router.get("/readall", verifyToken, usersController.getUsers);
 
-// // GET: Obtener un usuario por ID
-// router.get("/readone/:id", userController.getUsersById);
+// PUT: Actualizar un usuario por ID
+router.put("/update/:id", verifyToken, usersController.updateUser);
 
-// // PUT: Actualizar un usuario por ID
-// router.put("/update/:id", userController.updateUser);
-
-// // DELETE: Eliminar un usuario por ID
-// router.delete("/delete/:id", userController.deleteUser);
+// Ruta protegida
+router.get("/verifytoken", verifyToken, (req, res) => {
+  res.json({
+    message: `Bienvenido, ${req.email}! Acceso permitido! Token validado con éxito.`,
+  });
+});
 
 module.exports = router;

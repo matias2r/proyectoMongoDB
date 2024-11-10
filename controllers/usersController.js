@@ -58,7 +58,7 @@ exports.loginUser = async (req, res) => {
     }
 
     // Crear token de usuario
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
 
@@ -87,5 +87,29 @@ exports.verifyUser = async (req, res) => {
     res
       .status(500)
       .json({ message: "Error al verificar usuario", error: error.message });
+  }
+};
+
+// PUT: Actualizar usuario por ID
+exports.updateUser = async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    if (!user) {
+      return res.status(404).send({ message: "Usuario no encontrado" });
+    }
+    res.json(user);
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+};
+
+exports.getUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Error al obtener los usuarios", error });
   }
 };

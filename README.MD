@@ -1,5 +1,5 @@
 
-## Acerca del Proyecto
+## Proyecto 6 MongoDB
 
 
 Este es un proyecto backend desarrollado con **JavaScript**, **Node.js**, **Express**, **JWT**, **Bycript** y **MongoDB**, diseñado para gestionar datos de manera eficiente mediante una API REST. Se incluye la implementación de operaciones CRUD (Crear, Leer, Actualizar, Eliminar) y pruebas utilizando **Postman**, añadiendo la creacion de un **Token** automatico el cual es generado en el login y validado en su ruta especifica /verifyToken.

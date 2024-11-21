@@ -9,8 +9,8 @@ router.post("/create", verifyToken, usersController.createUser);
 // Login de usuario
 router.post("/login", usersController.loginUser);
 
-// GET: Obtener todos los usuarios
-router.get("/readall", verifyToken, usersController.getUsers);
+// GET: Leer todos los usuarios
+router.get("/readall", usersController.getUsers);
 
 // PUT: Actualizar un usuario por ID
 router.put("/update/:id", verifyToken, usersController.updateUser);

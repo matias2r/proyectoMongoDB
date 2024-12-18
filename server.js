@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
@@ -18,6 +19,8 @@ app.use("/api/product", require("./routes/productsRoutes"));
 
 // Rutas de usuarios (CRUD)
 app.use("/api/user", require("./routes/usersRoutes"));
+
+app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
 
 // Mostrar enlaces de la API
 const showApiLinks = (port) => {
